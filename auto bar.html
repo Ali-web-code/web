@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vertical Scrolling Image Bar</title>
+    <style>
+        /* CSS styles */
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Hide scrollbars */
+        }
+
+        .scroll-container {
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .scroll-content {
+            display: flex;
+            flex-direction: column;
+            height: 200%; /* Ensure enough space for scrolling */
+            position: absolute;
+            top: 0;
+            left: 0;
+            animation: scroll 20s linear infinite;
+        }
+
+        .scroll-content img {
+            width: 100%;
+            height: auto;
+            display: block; /* Prevent image stretching */
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-50%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="scroll-container">
+        <div class="scroll-content">
+            <img src="https://payformyclass.com/assets/img/northeastern-university.webp" alt="Image 1">
+            <img src="https://payformyclass.com/assets/img/caltech-university.webp" alt="Image 2">
+            <img src="https://payformyclass.com/assets/img/kentstate-university.webp" alt="Image 3">
+            <img src="https://payformyclass.com/assets/img/indianastate-university.webp" alt="Image 4">
+            <img src="ihttps://payformyclass.com/assets/img/brown-university.webp" alt="Image 5">
+            <img src="https://payformyclass.com/assets/img/cornell-university.webp" alt="Image 6">
+        </div>
+    </div>
+    <script>
+        // JavaScript for duplicating images
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.querySelector('.scroll-content');
+            const images = Array.from(container.children);
+            const totalImages = images.length;
+
+            // Duplicate images to create a seamless loop
+            for (let i = 0; i < totalImages; i++) {
+                const clone = images[i].cloneNode(true);
+                container.appendChild(clone);
+            }
+        });
+    </script>
+</body>
+</html>
